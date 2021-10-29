@@ -1,0 +1,3 @@
+2021-10-27 18:47:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TICKET" not found; SQL statement:
+select ticket0_.ticket_id as ticket_i1_1_1_, ticket0_.catagory as catagory2_1_1_, ticket0_.description as descript3_1_1_, ticket0_.employee_employee_id as employee4_1_1_, employee1_.employee_id as employee1_0_0_, employee1_.employee_name as employee2_0_0_, employee1_.password as password3_0_0_ from ticket ticket0_ left outer join employee employee1_ on ticket0_.employee_employee_id=employee1_.employee_id where ticket0_.ticket_id=? [42102-200]
