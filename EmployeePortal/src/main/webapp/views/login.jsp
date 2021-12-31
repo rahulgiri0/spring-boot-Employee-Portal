@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@include file="header.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,13 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<link href="css/index.css" rel="stylesheet">
+
 <title>Login: Employee Portal</title>
 </head>
 <body style="background-color: #e2e2e2;">
@@ -27,16 +22,27 @@
 					<h1>Employee Portal</h1>
 					<h6>Please Enter Your Credentials to Login</h6>
 				</div>
-				<form action="loginprocess" method="post" >
+				<c:url var="loginUrl" value="/dologin" />
+				<form action="${loginUrl}" method="post" >
+					<c:if test="${param.error != null}">
+						<div class="alert alert-danger">
+							<p>Invalid username and password.</p>
+						</div>
+					</c:if>
+					<c:if test="${param.logout != null}">
+						<div class="alert alert-success">
+							<p>You have been logged out successfully.</p>
+						</div>
+					</c:if>
 					<div class="mb-3">
-						<label for="librarianId" class="form-label">Employee ID:</label> <input
-							type="text" class="form-control" name="employeeId"
+						<label for="username" class="form-label">User Name:</label> <input
+							type="text" class="form-control" name="username" required
 							aria-describedby="emailHelp">
 
 					</div>
 					<div class="mb-3">
 						<label for="password" class="form-label">Password:</label> <input
-							type="password" class="form-control" name="password">
+							type="password" class="form-control" name="password" required>
 					</div>
 					<div class="mb-3 text-center">
 						<button type="submit" class="btn btn-primary">Login</button>
